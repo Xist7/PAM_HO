@@ -8,12 +8,12 @@ fun describeProfile(nama: String, umur: Int?, kota: String = "Tidak diketahui"):
     //   - "<umur> tahun" jika umur tidak null
     //   - "umur tidak diketahui" jika umur null
     //   Gunakan safe call (?.) dan elvis operator (?:)
+    val umurText = umur?.let { "$it tahun" } ?: "umur tidak diketahui"
 
     // TODO 2: Kembalikan (return) satu String dengan format:
     //   "Nama: <nama>, Umur: <umurText>, Kota: <kota>"
     //   Gunakan string template ($nama, dst), bukan concatenation (+)
-
-    return ""
+    return "Nama: $nama, Umur: $umurText, Kota: $kota"
 }
 
 fun main() {
