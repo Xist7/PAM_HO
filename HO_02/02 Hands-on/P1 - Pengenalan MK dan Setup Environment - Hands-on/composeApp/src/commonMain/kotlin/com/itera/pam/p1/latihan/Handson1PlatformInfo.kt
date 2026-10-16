@@ -17,8 +17,9 @@ import com.itera.pam.p1.getPlatformName
 //         contoh: "Halo dari Android 34!" / "Halo dari Desktop JVM 21!"
 
 fun getGreetingMessage(): String {
-    // Kode kamu di sini...
-    return "TODO: lengkapi getGreetingMessage()"
+    // Kode kamu di sini 
+    val platformName = getPlatformName()
+    return "Halo dari $platformName!"
 }
 
 @Composable
