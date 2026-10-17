@@ -10,9 +10,14 @@
 fun makeCounter(): () -> Int {
     // TODO 1: Deklarasikan `var count` bertipe Int, mulai dari 0.
     // Variabel ini akan "ditangkap" (captured) oleh closure di bawah.
+    var count: Int = 0
 
     // TODO 2: Kembalikan sebuah lambda `() -> Int` yang menambah `count`
     // lalu mengembalikan nilai barunya.
+    return {
+        count++
+        count
+    }
 }
 
 fun main() {
