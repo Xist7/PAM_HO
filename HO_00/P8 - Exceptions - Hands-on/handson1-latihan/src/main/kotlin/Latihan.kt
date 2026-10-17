@@ -8,9 +8,17 @@ fun safeDivide(a: Int, b: Int): Int {
     //         lalu kembalikan 0 sebagai nilai default
     // TODO 3: Di blok finally, cetak "safeDivide($a, $b) selesai diproses"
     //         (finally HARUS tetap jalan baik sukses maupun error)
-
-    return a / b // <-- baris ini akan melempar ArithmeticException saat b == 0
-}
+    
+    try{
+        return a / b 
+    } catch (e: ArithmeticException){
+        throw ArithmeticException("Dilarang membagi dengan nol")
+        return 0
+    } finally{
+        println("safeDivide($a, $b) selesai diproses")
+    }
+    
+    }
 
 fun main() {
     println("Hasil 1: ${safeDivide(10, 2)}")  // sukses -> 5

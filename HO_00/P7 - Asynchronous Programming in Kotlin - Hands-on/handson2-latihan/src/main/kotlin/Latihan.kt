@@ -28,6 +28,8 @@ fun main() = runBlocking {
 
     // TODO 3: Ambil hasil total dari Deferred tersebut dengan await(),
     //         lalu cetak "Total belanja: Rp<total>".
-
-    // Kode kamu di sini...
+    writeAccessLog("Checkout dimulai")
+    val totalHarga = async {calculateTotalPrice(prices)}
+    println("Total Belanja: Rp${totalHarga.await()}")
+    
 }
