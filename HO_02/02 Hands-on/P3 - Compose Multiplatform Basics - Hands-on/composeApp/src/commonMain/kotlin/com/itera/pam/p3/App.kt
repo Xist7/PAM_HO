@@ -57,11 +57,17 @@ fun App() {
                     }
 
                     Screen.Latihan1 -> Handson1Screen()
+
                     Screen.Solusi1 -> Handson1ScreenSolusi()
+
                     Screen.Latihan2 -> Handson2Screen()
+
                     Screen.Solusi2 -> Handson2ScreenSolusi()
+
                     Screen.Latihan3 -> Handson3Screen()
+
                     Screen.Solusi3 -> Handson3ScreenSolusi()
+
                 }
             }
         }
