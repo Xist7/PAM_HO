@@ -25,4 +25,7 @@ fun main() = runBlocking {
         // .filter { ... }
         // .map { ... }
         // .collect { ... }
+        .filter {it>30}
+        .map {"⚠️ WARNING: Suhu tinggi terdeteksi: ${it}°C"}
+        .collect {aprintln(it)}
 }
