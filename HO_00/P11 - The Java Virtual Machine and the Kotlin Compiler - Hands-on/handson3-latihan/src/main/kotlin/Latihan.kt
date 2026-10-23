@@ -18,6 +18,7 @@
 class Greeter {
     companion object {
         // TODO 1: Tambahkan anotasi @JvmStatic pada fungsi ini
+        @JvmStatic
         fun greet(name: String): String {
             return "Halo, $name!"
         }
