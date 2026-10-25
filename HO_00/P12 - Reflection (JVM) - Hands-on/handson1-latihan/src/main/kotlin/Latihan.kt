@@ -16,6 +16,13 @@ fun main() {
     //         setiap property (gunakan import kotlin.reflect.full.memberProperties di atas)
 
     // Kode kamu di sini...
+    val kClass = product::class
+    println("Kelas: ${kClass.simpleName}")
+    println("Properties:")
+    for (property in kClass.memberProperties) {
+        println("- ${property.name}")   
+    }
+
 
     // Output yang diharapkan:
     // Kelas: Product

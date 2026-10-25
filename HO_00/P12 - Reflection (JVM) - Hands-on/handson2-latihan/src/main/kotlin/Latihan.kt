@@ -14,6 +14,11 @@ fun printFields(obj: Any) {
     //         untuk mendapatkan nilainya, lalu cetak "namaProperty = nilai"
 
     // Kode kamu di sini...
+    val kClass = obj::class
+    for (property in kClass.memberProperties){
+        val value = property.getter.call(obj)
+        println("${property.name} = $value")
+    }
 }
 
 fun main() {

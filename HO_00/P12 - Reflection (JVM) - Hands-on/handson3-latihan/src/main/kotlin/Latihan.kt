@@ -14,6 +14,9 @@ import kotlin.reflect.full.findAnnotation
 //         @Retention(AnnotationRetention.RUNTIME) — tanpa RUNTIME,
 //         annotation tidak akan terbaca saat reflection!
 // annotation class Required
+@Target(AnnotationTarget.FIELD)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class Required
 
 data class RegistrasiForm(
     @Required val nama: String,
@@ -32,6 +35,15 @@ fun validate(obj: Any): List<String> {
     // TODO 5: Jika nilai null ATAU (String dan blank), tambahkan property.name ke `gagal`
 
     // Kode kamu di sini...
+    for(property in obj::class.memberProperties){
+        val requiredAnnotation = property.findAnnotation<Required>()
+        if(requireAnnotation != null){
+            val value = property.getter.call(obj)
+            if(value == null || (value is String && value.isBlank())){
+                gagal.add(property.name)
+            }
+        }
+    }
 
     return gagal
 }
