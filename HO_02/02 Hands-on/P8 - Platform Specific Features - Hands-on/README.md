@@ -16,11 +16,11 @@ Belum ada slide PDF untuk pertemuan ini — materi diturunkan langsung dari RPS 
 1. Pastikan Android Studio + Kotlin Multiplatform plugin sudah terinstall (lihat `P1 - Pengenalan MK dan Setup Environment - Hands-on/README.md` jika belum pernah setup).
 2. Buka folder **"P9 - Platform Specific Features - Hands-on"** ini di Android Studio (`File > Open`) sebagai proyek terpisah, tunggu Gradle sync selesai.
 3. Pilih salah satu run configuration:
-   - **Android** — pilih configuration `composeApp`, pilih emulator/device, klik ▶️ (atau `./gradlew :composeApp:installDebug`). Uji Latihan 1 (getar) & Latihan 2 (izin kamera) di sini — keduanya butuh runtime Android untuk terasa nyata.
+   - **Android** — pilih configuration `androidApp`, pilih emulator/device, klik ▶️ (atau `./gradlew :androidApp:installDebug`). Uji Latihan 1 (getar) & Latihan 2 (izin kamera) di sini — keduanya butuh runtime Android untuk terasa nyata.
    - **Desktop** — `./gradlew :composeApp:run`. Latihan 1 akan mencetak log "tidak mendukung getar" ke console (bukan bug — memang begitu perilaku desktop), Latihan 2 selalu menunjukkan izin "DIBERIKAN" (stub).
    - **iOS** *(khusus Mac + Xcode)* — folder `iosApp/` tidak disertakan (lihat caveat yang sama di `P1 - Pengenalan MK dan Setup Environment - Hands-on/README.md`). Salin `composeApp/src/` dari sini ke proyek KMP baru dari [kmp.jetbrains.com](https://kmp.jetbrains.com) jika ingin mencoba di iOS.
-4. Buka menu di `App.kt` untuk berpindah antar Latihan 1-3 dan Solusi 1-3.
-5. Lengkapi TODO di `composeApp/src/commonMain/kotlin/.../latihan/`, lalu jalankan ulang.
+4. Buka menu di `App.kt` untuk berpindah antar Latihan 1-3.
+5. Implementasi Latihan 1-3 tersedia di `composeApp/src/commonMain/kotlin/.../latihan/`; uji getar dan izin kamera di Android untuk melihat perilaku platform aslinya.
 
 ## Daftar Latihan
 
@@ -40,7 +40,7 @@ Belum ada slide PDF untuk pertemuan ini — materi diturunkan langsung dari RPS 
 `initKoin()` dan `appModule` (mendaftarkan `GreetingRepository`) sudah disiapkan di `di/AppModule.kt` dan dipanggil dari setiap entry point platform. Tugasmu: ambil instance lewat `koinInject<GreetingRepository>()` dan tampilkan hasilnya.
 
 - **Konsep:** `module { single<T> { ... } }`, `startKoin`, `koinInject()` di Compose.
-- **Catatan implementasi:** berbeda dari pola "sengaja tidak bisa di-compile" di hands-on lain — di sini latihan yang belum selesai tetap **bisa di-compile** (hanya menampilkan teks placeholder), karena proyek KMP ini satu modul `composeApp` tunggal: kalau satu file gagal compile, seluruh app (termasuk menu dan solusi lain) ikut gagal.
+- **Catatan implementasi:** modul Koin dan layar latihan sudah terhubung; latihan ini tetap bisa dijalankan lintas target, dengan implementasi platform-specific pada `androidMain`, `iosMain`, dan `desktopMain`.
 
 ## Troubleshooting
 

@@ -15,11 +15,11 @@ Belum ada slide PDF untuk pertemuan ini — materi hands-on digali langsung dari
 
 1. Buka folder **"P5 - Navigasi Antar Layar - Hands-on"** ini di Android Studio (`File > Open`) sebagai proyek terpisah, lalu tunggu Gradle sync selesai.
 2. Pilih salah satu run configuration:
-   - **Android** — pilih configuration `composeApp`, pilih emulator/device, klik ▶️ (atau `./gradlew :composeApp:installDebug`).
+   - **Android** — pilih configuration `androidApp`, pilih emulator/device, klik ▶️ (atau `./gradlew :androidApp:installDebug`).
    - **Desktop** — jalankan `./gradlew :composeApp:run` dari terminal.
    - **iOS** *(khusus Mac + Xcode)* — proyek ini tidak menyertakan folder `iosApp/` (proyek Xcode). Buat proyek baru lewat [kmp.jetbrains.com](https://kmp.jetbrains.com), lalu salin isi `composeApp/src/` dari folder ini ke proyek barumu.
-3. Dari menu utama `App.kt`, pilih Latihan 1/2/3 atau Solusi 1/2/3. Menu luar ini pakai state sederhana (sama seperti pertemuan lain); yang menggunakan Navigation Component sungguhan adalah **di dalam** tiap latihan.
-4. Buka file di `composeApp/src/commonMain/kotlin/.../latihan/`, lengkapi bagian `TODO`, lalu jalankan ulang untuk melihat hasilnya.
+3. Dari menu utama `App.kt`, pilih Latihan 1/2/3. Menu luar ini pakai state sederhana (sama seperti pertemuan lain); yang menggunakan Navigation Component sungguhan adalah **di dalam** tiap latihan.
+4. Jalankan Latihan 1-3 dari menu `App.kt`; implementasi navigasi ada di `composeApp/src/commonMain/kotlin/.../latihan/`.
 
 ## Daftar Latihan
 
@@ -36,7 +36,7 @@ Daftar item di Home, tap salah satu untuk membuka Detail dengan `itemId` yang be
 ### 3. `Handson3BottomNavigation.kt` — Bottom Navigation
 3 tab (Home/Search/Profil) dengan `NavigationBar` + `NavigationBarItem`, terhubung ke satu `NavHost`.
 
-- **Catatan:** kode latihan ini **bisa dijalankan** tapi sengaja punya bug — `navigate()` dipanggil tanpa opsi `popUpTo`/`launchSingleTop`/`restoreState`, sehingga back stack menumpuk setiap kali pindah tab. Coba dulu, amati bug-nya, baru perbaiki lewat TODO.
+- **Catatan:** perpindahan tab menggunakan `popUpTo`/`launchSingleTop`/`restoreState` agar back stack tidak menumpuk dan state tiap tab dapat dipulihkan.
 - **Konsep:** `NavigationBar`, `currentBackStackEntryAsState()`, `popUpTo` + `saveState`, `launchSingleTop`, `restoreState`.
 
 ## Troubleshooting

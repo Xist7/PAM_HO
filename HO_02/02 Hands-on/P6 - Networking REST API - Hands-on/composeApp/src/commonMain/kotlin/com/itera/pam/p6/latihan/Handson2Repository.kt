@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.CancellationException
 
 // Hands-on 2: Repository Pattern & Loading State
 // Bungkus fetchUsers() (dari Handson1KtorClient.kt) di balik sebuah Repository,
@@ -37,12 +38,14 @@ class UserListStateHolder(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     suspend fun load() {
-        // TODO 1: set _state.value ke UiState.Loading sebelum mulai fetch
-        // TODO 2: panggil repository.getUsers() di dalam try-catch
-        // TODO 3: jika berhasil, set _state.value ke UiState.Success(users)
-        // TODO 4: jika gagal (catch Exception e), set _state.value ke
-        //         UiState.Error(e.message ?: "Terjadi kesalahan")
-        TODO("Lengkapi load(): Loading -> try fetch -> Success/Error")
+        _state.value = UiState.Loading
+        try {
+            _state.value = UiState.Success(repository.getUsers())
+        } catch (exception: CancellationException) {
+            throw exception
+        } catch (exception: Exception) {
+            _state.value = UiState.Error(exception.message ?: "Terjadi kesalahan")
+        }
     }
 }
 
@@ -50,6 +53,6 @@ class UserListStateHolder(
 fun Handson2Screen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 2: Repository Pattern & Loading State")
-        Text("Lengkapi TODO di UserListStateHolder.load(), lalu lihat Solusi 2 untuk contoh penggunaannya di Compose.")
+        Text("UserListStateHolder mengelola status loading, hasil, dan error untuk permintaan repository.")
     }
 }

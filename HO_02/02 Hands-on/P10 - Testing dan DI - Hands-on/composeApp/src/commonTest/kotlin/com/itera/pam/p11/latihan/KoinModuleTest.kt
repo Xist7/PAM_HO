@@ -7,6 +7,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
+import kotlin.test.assertNotNull
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -16,13 +17,14 @@ import kotlin.test.Test
 // Koin container, dan setiap dependency ter-hubung dengan benar.
 class KoinModuleTest : KoinTest {
 
-    // TODO 1: deklarasikan 2 property berikut:
-    // private val counter: Counter by inject()
-    // private val sessionLogger: SessionLogger by inject()
+    private val counter: Counter by inject()
+    private val sessionLogger: SessionLogger by inject()
 
     @BeforeTest
     fun setup() {
-        // TODO 2: startKoin { modules(appModule) }
+        startKoin {
+            modules(appModule)
+        }
     }
 
     @AfterTest
@@ -32,7 +34,7 @@ class KoinModuleTest : KoinTest {
 
     @Test
     fun semuaDependencyDiAppModuleBerhasilDiResolve() {
-        // TODO 3: assertNotNull(counter) dan assertNotNull(sessionLogger)
-        TODO("Lengkapi test resolusi Koin module")
+        assertNotNull(counter)
+        assertNotNull(sessionLogger)
     }
 }

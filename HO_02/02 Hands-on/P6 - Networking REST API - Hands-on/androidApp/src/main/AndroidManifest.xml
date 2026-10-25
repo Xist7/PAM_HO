@@ -1,15 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
-        android:label="Hands-on P9"
+        android:label="Hands-on P6"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name="com.itera.pam.p6.MainActivity"
             android:exported="true"
             android:theme="@android:style/Theme.Material.Light.NoActionBar">
             <intent-filter>
@@ -18,5 +15,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

@@ -15,7 +15,7 @@ Proyek Kotlin Multiplatform (KMP) + Compose Multiplatform untuk 3 latihan prakti
 
 1. Buka folder **"P10 - Integrasi AI API - Hands-on"** ini di Android Studio (`File > Open`), tunggu Gradle sync selesai.
 2. Jalankan seperti biasa:
-   - **Android** — configuration `composeApp`, pilih emulator/device, klik ▶️.
+   - **Android** — configuration `androidApp`, pilih emulator/device, klik ▶️.
    - **Desktop** — `./gradlew :composeApp:run` (paling cepat untuk coba-coba).
    - **iOS** *(Mac + Xcode)* — folder `iosApp/` tidak disertakan; buat proyek baru via [kmp.jetbrains.com](https://kmp.jetbrains.com) lalu salin isi `composeApp/src/` dari sini.
 3. Semua latihan **berjalan tanpa API key** karena secara default memakai `MockAiRepository` (jawaban simulasi setelah delay 1 detik) — cocok untuk dicoba langsung di kelas.
@@ -23,7 +23,7 @@ Proyek Kotlin Multiplatform (KMP) + Compose Multiplatform untuk 3 latihan prakti
    - Buka https://aistudio.google.com/apikey, login dengan akun Google, klik "Create API key" (gratis).
    - Buka `composeApp/src/commonMain/kotlin/com/itera/pam/p10/ApiConfig.kt`, ganti `"YOUR_API_KEY_HERE"` dengan key tsb.
    - **Jangan commit key asli ke Git** — folder ini memang tidak dirancang untuk produksi; lihat komentar di `ApiConfig.kt` untuk cara yang benar di aplikasi sungguhan.
-5. Menu di `App.kt` menggunakan state sederhana (bukan Navigation Component) untuk berpindah antar Latihan 1-3 dan Solusi 1-3.
+5. Menu di `App.kt` menggunakan state sederhana (bukan Navigation Component) untuk berpindah antar Latihan 1-3.
 
 ## Daftar Latihan
 
@@ -40,14 +40,14 @@ Lengkapi `buildPrompt()` agar menambahkan instruksi sistem (system instruction) 
 ### 3. `Handson3ChatScreen.kt` — AI-Powered Chat UI
 Bangun UI chat: input teks, tombol kirim, daftar bubble pesan (`isUser`/`text`) yang scrollable, indikator loading saat menunggu `AiRepository.ask()`.
 
-- **Catatan:** layar ini sengaja hanya menampilkan placeholder sebelum semua TODO dilengkapi.
+- **Catatan:** layar menyediakan UI chat scrollable dengan indikator loading dan `MockAiRepository`, jadi bisa dicoba tanpa API key.
 - **Konsep:** `LazyColumn`, state list immutable, `rememberCoroutineScope()` untuk memanggil suspend function dari callback `onClick`.
 
 ## Troubleshooting
 
 | Error | Penyebab | Solusi |
 |---|---|---|
-| Jawaban selalu "Error: ..." di Latihan 1/Solusi 1 | `GEMINI_API_KEY` masih `"YOUR_API_KEY_HERE"` (placeholder) | Isi API key asli dari https://aistudio.google.com/apikey di `ApiConfig.kt` |
+| Jawaban selalu "Error: ..." di Latihan 1 | `GEMINI_API_KEY` masih `"YOUR_API_KEY_HERE"` (placeholder) | Isi API key asli dari https://aistudio.google.com/apikey di `ApiConfig.kt` |
 | HTTP 400 Bad Request | Request body tidak sesuai format Gemini (mis. salah struktur JSON) | Cocokkan struktur `GeminiRequest`/`GeminiContent`/`GeminiPart` dengan dokumentasi Gemini API |
 | HTTP 403 / API key invalid | Key salah ketik, sudah dihapus, atau kena rate limit | Generate key baru di aistudio.google.com, cek kuota gratis harian |
 | `candidates` kosong / jawaban null | Prompt terkena safety filter Gemini, atau ada di region yang dibatasi | Ini situasi valid, bukan bug — pastikan `ask()` mengembalikan `Result.failure` dengan pesan yang jelas, bukan crash |

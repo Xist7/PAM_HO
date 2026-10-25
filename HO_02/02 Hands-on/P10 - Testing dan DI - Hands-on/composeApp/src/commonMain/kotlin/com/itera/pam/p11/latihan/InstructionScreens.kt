@@ -17,7 +17,7 @@ fun Handson1Screen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 1: Unit Test Dasar — Counter")
         Text("Buka: composeApp/src/commonTest/kotlin/.../p11/latihan/CounterTest.kt")
-        Text("Lengkapi 3 TODO mengikuti pola Arrange-Act-Assert, lalu jalankan test-nya lewat IDE (klik ▶️ di sebelah class/fun test) atau `./gradlew :composeApp:desktopTest`.")
+        Text("Tiga test Counter menerapkan Arrange-Act-Assert; jalankan lewat IDE atau `./gradlew :composeApp:desktopTest`.")
     }
 }
 
@@ -26,7 +26,7 @@ fun Handson2Screen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 2: Test Double — Fake ClockProvider")
         Text("Buka: composeApp/src/commonTest/kotlin/.../p11/latihan/SessionLoggerTest.kt")
-        Text("Lengkapi class FakeClockProvider (delegasikan ke TestTimeSource) dan test-nya, lalu jalankan.")
+        Text("FakeClockProvider memakai TestTimeSource agar durasi sesi dapat diuji deterministik.")
     }
 }
 
@@ -35,6 +35,6 @@ fun Handson3Screen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 3: Koin DI Module")
         Text("Buka: composeApp/src/commonTest/kotlin/.../p11/latihan/KoinModuleTest.kt")
-        Text("Lengkapi property `by inject<T>()` dan startKoin(...) di setup(), lalu jalankan.")
+        Text("Test memulai Koin dengan appModule dan memverifikasi resolusi dependency.")
     }
 }

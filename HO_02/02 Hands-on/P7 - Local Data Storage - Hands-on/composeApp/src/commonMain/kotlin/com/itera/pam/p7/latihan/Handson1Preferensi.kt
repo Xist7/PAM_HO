@@ -34,13 +34,13 @@ fun Handson1Screen(database: AppDatabase) {
     var jumlah by remember { mutableStateOf(0L) }
 
     LaunchedEffect(Unit) {
-        // TODO 1: baca nilai lama dengan
-        //         database.preferensiQueries.selectByKey(KEY_JUMLAH_DIBUKA)
-        //             .executeAsOneOrNull()?.prefValue?.toLongOrNull() ?: 0L
-        // TODO 2: hitung nilai baru = nilai lama + 1
-        // TODO 3: simpan nilai baru dengan
-        //         database.preferensiQueries.upsert(KEY_JUMLAH_DIBUKA, nilaiBaru.toString())
-        // TODO 4: update state `jumlah` dengan nilai baru tsb
+        val jumlahLama = database.preferensiQueries
+            .selectByKey(KEY_JUMLAH_DIBUKA)
+            .executeAsOneOrNull()
+            ?.toLongOrNull() ?: 0L
+        val jumlahBaru = jumlahLama + 1
+        database.preferensiQueries.upsert(KEY_JUMLAH_DIBUKA, jumlahBaru.toString())
+        jumlah = jumlahBaru
     }
 
     Column(modifier = Modifier.padding(16.dp)) {

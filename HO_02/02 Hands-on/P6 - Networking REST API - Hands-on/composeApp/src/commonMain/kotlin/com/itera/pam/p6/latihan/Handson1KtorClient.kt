@@ -26,27 +26,21 @@ data class RemoteUser(
     val email: String
 )
 
-// TODO 1: Buat HttpClient dengan ContentNegotiation + json() supaya Ktor bisa
-//         otomatis decode response JSON menjadi objek Kotlin.
-//         val client = HttpClient {
-//             install(ContentNegotiation) {
-//                 json(Json { ignoreUnknownKeys = true })
-//             }
-//         }
-val client: HttpClient = TODO("Buat HttpClient dengan plugin ContentNegotiation + json()")
+val client: HttpClient = HttpClient {
+    expectSuccess = true
+    install(ContentNegotiation) {
+        json(Json { ignoreUnknownKeys = true })
+    }
+}
 
-// TODO 2: Lakukan GET request ke "https://jsonplaceholder.typicode.com/users"
-//         dan decode response body-nya menjadi List<RemoteUser>.
 suspend fun fetchUsers(): List<RemoteUser> {
-    // Kode kamu di sini...
-    // return client.get("https://jsonplaceholder.typicode.com/users").body()
-    TODO("Panggil client.get(...) lalu .body<List<RemoteUser>>()")
+    return client.get("https://jsonplaceholder.typicode.com/users").body()
 }
 
 @Composable
 fun Handson1Screen() {
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Hands-on 1: Ktor Client Dasar & GET Request")
-        Text("Lengkapi TODO di Handson1KtorClient.kt, lalu lihat Solusi 1 untuk contoh pemanggilan fetchUsers() dari Composable.")
+        Text("Handson1KtorClient menyediakan HttpClient dan GET request untuk mengambil daftar pengguna.")
     }
 }

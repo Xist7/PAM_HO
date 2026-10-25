@@ -18,12 +18,12 @@ import androidx.compose.ui.unit.dp
 // dipegang oleh parent (RegistrationForm) dan dikirim turun lewat parameter.
 //
 // Checklist:
-// [ ] Stateless LabeledTextField
-// [ ] Parameter: value, onValueChange
-// [ ] State hoisted ke parent
-// [ ] Name dan Email field
-// [ ] Preview yang menampilkan "Hello, [name]!"
-// [ ] Gunakan 1 komponen untuk kedua field
+// [x] Stateless LabeledTextField
+// [x] Parameter: value, onValueChange
+// [x] State hoisted ke parent
+// [x] Name dan Email field
+// [x] Preview yang menampilkan "Hello, [name]!"
+// [x] Gunakan 1 komponen untuk kedua field
 
 // Stateless TextField component
 @Composable
@@ -32,7 +32,11 @@ fun LabeledTextField(
     value: String,
     onValueChange: (String) -> Unit
 ) {
-    // TODO: Implement dengan OutlinedTextField(value = value, onValueChange = onValueChange, label = { Text(label) })
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(label) }
+    )
 }
 
 // Parent yang menyimpan state
@@ -49,7 +53,11 @@ fun Handson2Screen() {
             value = name,
             onValueChange = { name = it }
         )
-        // TODO: Tambahkan email field pakai LabeledTextField yang sama, hoisted ke `email`
-        // TODO: Tampilkan preview data, misal: Text("Hello, $name! Email: $email")
+        LabeledTextField(
+            label = "Email",
+            value = email,
+            onValueChange = { email = it }
+        )
+        Text("Hello, $name! Email: $email")
     }
 }

@@ -16,11 +16,11 @@ Proyek KMP sungguhan seperti `P1 - Pengenalan MK dan Setup Environment - Hands-o
 
 1. Buka folder **"P6 - Networking REST API - Hands-on"** ini di Android Studio (`File > Open`), tunggu Gradle sync selesai.
 2. Pilih salah satu run configuration:
-   - **Android** — pilih configuration `composeApp`, pilih emulator/device, klik ▶️. **Perlu koneksi internet aktif di emulator/device** (izin `INTERNET` sudah ditambahkan di `AndroidManifest.xml`).
+   - **Android** — pilih configuration `androidApp`, pilih emulator/device, klik ▶️. **Perlu koneksi internet aktif di emulator/device** (izin `INTERNET` sudah ditambahkan di `AndroidManifest.xml`).
    - **Desktop** — jalankan `./gradlew :composeApp:run` dari terminal.
    - **iOS** *(khusus Mac + Xcode)* — sama seperti `P1 - Pengenalan MK dan Setup Environment - Hands-on/`, folder `iosApp/` tidak disertakan; buat proyek baru via [kmp.jetbrains.com](https://kmp.jetbrains.com) lalu salin isi `composeApp/src/` dari sini.
-3. Di menu `App.kt`, pilih Latihan 1-3 atau Solusi 1-3.
-4. Buka file di `composeApp/src/commonMain/kotlin/.../latihan/`, lengkapi bagian `TODO`, lalu jalankan ulang.
+3. Di menu `App.kt`, pilih Latihan 1-3.
+4. Jalankan Latihan 1-3 dari menu `App.kt`; request Ktor, repository, dan UI state tersedia di `composeApp/src/commonMain/kotlin/.../latihan/`.
 
 Seluruh latihan memanggil satu endpoint yang sama untuk konsistensi cerita: `https://jsonplaceholder.typicode.com/users` (fake REST API gratis, umum dipakai untuk belajar, tidak butuh API key).
 
@@ -39,7 +39,7 @@ Lengkapi `UserListStateHolder.load()` agar mengubah `_state` menjadi `Loading` �
 ### 3. `Handson3UserListUi.kt` — Loading/Error UI
 Tampilkan `UiState` di Compose: `CircularProgressIndicator()` saat Loading, `LazyColumn` daftar user saat Success, pesan error + tombol "Coba Lagi" saat Error.
 
-- **Catatan:** fungsi ini sengaja belum menampilkan apa-apa selain placeholder sebelum semua TODO dilengkapi.
+- **Catatan:** layar menampilkan indikator loading, daftar pengguna, atau pesan error dengan aksi coba lagi.
 - **Konsep:** `LaunchedEffect`, `collectAsState`, `rememberCoroutineScope`, smart-cast pada `sealed class`.
 
 ## Troubleshooting

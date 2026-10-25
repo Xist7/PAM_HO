@@ -16,10 +16,10 @@ Belum ada slide untuk pertemuan ini, jadi materi & latihan di sini diturunkan la
 ## Cara Menjalankan
 
 1. Buka folder **"P11 - Testing dan DI - Hands-on"** ini di Android Studio (`File > Open`), tunggu Gradle sync selesai.
-2. Untuk melihat layar instruksional (opsional): jalankan seperti biasa — **Android** (configuration `composeApp`) atau **Desktop** (`./gradlew :composeApp:run`).
-3. Untuk mengerjakan latihan sungguhannya: buka file test di `composeApp/src/commonTest/kotlin/com/itera/pam/p11/latihan/`, lengkapi bagian `TODO`.
+2. Untuk melihat layar instruksional (opsional): jalankan seperti biasa — **Android** (configuration `androidApp`) atau **Desktop** (`./gradlew :composeApp:run`).
+3. Latihan yang sebenarnya ada di file test `composeApp/src/commonTest/kotlin/com/itera/pam/p11/latihan/`; buka file tersebut untuk meninjau Arrange-Act-Assert, fake clock, dan resolusi Koin.
 4. Jalankan test lewat IDE (klik ikon ▶️ di sebelah nama class/fungsi test) atau dari terminal: `./gradlew :composeApp:desktopTest` (menjalankan test commonTest lewat target desktop/JVM — paling cepat, tidak perlu emulator).
-5. Bandingkan dengan versi lengkap di `composeApp/src/commonTest/kotlin/com/itera/pam/p11/solusi/` jika stuck.
+5. Jika stuck, tinjau ulang pola Arrange-Act-Assert dan implementasi dependency yang diuji di `composeApp/src/commonMain/kotlin/com/itera/pam/p11/`.
 
 ## Daftar Latihan
 
@@ -31,7 +31,7 @@ Uji `Counter.increment()` / `decrement()` (minimum 0) / `reset()` menggunakan `k
 ### 2. `SessionLoggerTest.kt` — Test Double (Fake ClockProvider)
 Lengkapi `FakeClockProvider` yang mendelegasikan ke `TestTimeSource` (jam palsu bawaan `kotlin.time`), lalu gunakan untuk menguji `SessionLogger` secara deterministik — tanpa test double, test berbasis waktu asli akan flaky.
 
-- **Catatan:** class `FakeClockProvider` di file latihan sengaja tidak lengkap (tidak meng-implement `ClockProvider` sepenuhnya) sampai delegasi `TimeSource by source` ditambahkan — modul ini **tidak akan compile** sebelum TODO 1 selesai.
+- **Catatan:** `FakeClockProvider` mendelegasikan `TimeSource` ke `TestTimeSource` sehingga durasi sesi dapat diuji secara deterministik.
 - **Konsep:** test double / fake, `TestTimeSource`, Kotlin interface delegation (`by`).
 
 ### 3. `KoinModuleTest.kt` — Koin DI Module

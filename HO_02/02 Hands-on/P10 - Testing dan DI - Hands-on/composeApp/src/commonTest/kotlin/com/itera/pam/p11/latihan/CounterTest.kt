@@ -16,11 +16,11 @@ class CounterTest {
         val counter = Counter()
 
         // Act
-        // TODO 1: panggil counter.increment() dua kali
+        counter.increment()
+        counter.increment()
 
         // Assert
-        // TODO 2: assertEquals(2, counter.value.value)
-        TODO("Lengkapi test increment")
+        assertEquals(2, counter.value.value)
     }
 
     @Test
@@ -29,11 +29,10 @@ class CounterTest {
         val counter = Counter()
 
         // Act
-        // TODO 3: panggil counter.decrement() padahal nilai masih 0
+        counter.decrement()
 
         // Assert
-        // TODO 4: pastikan nilainya tetap 0, bukan -1
-        TODO("Lengkapi test decrement pada batas bawah")
+        assertEquals(0, counter.value.value)
     }
 
     @Test
@@ -45,10 +44,9 @@ class CounterTest {
         counter.increment()
 
         // Act
-        // TODO 5: panggil counter.reset()
+        counter.reset()
 
         // Assert
-        // TODO 6: assertEquals(0, counter.value.value)
-        TODO("Lengkapi test reset")
+        assertEquals(0, counter.value.value)
     }
 }

@@ -18,11 +18,11 @@ Sesuai CPMK0501 (indikator: *mampu mengelola state dan menerapkan MVVM pattern*)
 
 1. Buka folder **"P4 - State Management MVVM - Hands-on"** ini di Android Studio (`File > Open`) sebagai proyek terpisah, tunggu Gradle sync selesai.
 2. Pilih salah satu run configuration:
-   - **Android** — pilih configuration `composeApp`, pilih emulator/device, klik ▶️ (atau `./gradlew :composeApp:installDebug`).
+   - **Android** — pilih configuration `androidApp`, pilih emulator/device, klik ▶️ (atau `./gradlew :androidApp:installDebug`).
    - **Desktop** — jalankan `./gradlew :composeApp:run` dari terminal.
    - **iOS** *(khusus Mac + Xcode)* — proyek ini **tidak menyertakan** folder `iosApp/`. Buat proyek baru lewat [kmp.jetbrains.com](https://kmp.jetbrains.com), lalu salin isi `composeApp/src/` dari folder ini.
-3. Di `App.kt` ada menu untuk berpindah antara Latihan 1-3 dan Solusi 1-3 (state sederhana, bukan Navigation Component — itu materi Pertemuan 5).
-4. Buka file di `composeApp/src/commonMain/kotlin/.../latihan/`, lengkapi bagian `TODO`, jalankan ulang untuk melihat hasilnya. Bandingkan dengan `solusi/` yang berpasangan jika stuck.
+3. Di `App.kt` ada menu berbasis state sederhana untuk berpindah antara Latihan 1-3 (bukan Navigation Component — itu materi Pertemuan 5).
+4. Jalankan Latihan 1-3 dari menu `App.kt`; implementasi ada di `composeApp/src/commonMain/kotlin/.../latihan/`.
 
 ## Daftar Latihan
 
@@ -39,7 +39,7 @@ Buat `LabeledTextField` yang **stateless** (state-nya di-hoist ke parent `Regist
 ### 3. `Handson3TodoApp.kt` — Todo App dengan ViewModel (MVVM)
 Implementasikan `TodoViewModel` (Model: `Todo`/`TodoUiState`, ViewModel: `MutableStateFlow` private + `StateFlow` public, View: Compose UI dengan `collectAsState()`), lengkap dengan fungsi tambah todo dan toggle status selesai.
 
-- **Catatan:** UI-nya sengaja belum menampilkan form/list apa pun sebelum semua TODO di `TodoViewModel` dan Composable-nya dilengkapi.
+- **Catatan:** layar menampilkan form state-hoisted dan daftar todo MVVM yang dikelola `TodoViewModel`.
 - **Konsep:** MVVM (Model-View-ViewModel), `ViewModel`, `MutableStateFlow`/`StateFlow`, `viewModel { }` composable factory, `LazyColumn`, `Checkbox`.
 
 ## Troubleshooting
